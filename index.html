@@ -1,103 +1,205 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>QCM Terminale Enseignement Scientifique</title>
+  <meta charset="UTF-8">
+  <title>QCM - Rayonnement Solaire</title>
   <style>
     body {
-      font-family: sans-serif;
-      margin: 20px;
+      font-family: "Segoe UI", sans-serif;
+      background: #f2f7ff;
+      padding: 20px;
+      margin: 0;
     }
     h1 {
       text-align: center;
+      color: #2c3e50;
     }
-    p {
-      margin-bottom: 15px;
-      line-height: 1.5;
+    .question {
+      background: white;
+      padding: 15px 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      transition: transform 0.2s;
     }
-    button {
-      display: block;
-      margin: 0 auto;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
+    .question:hover {
+      transform: scale(1.01);
     }
-    #resultat {
+    .question p {
+      margin: 0 0 10px;
       font-weight: bold;
+      color: #34495e;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    label:hover {
+      background: #ecf0f1;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    .btn {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 25px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #2980b9;
+    }
+    .result {
       text-align: center;
+      font-size: 20px;
+      font-weight: bold;
       margin-top: 20px;
+    }
+    .correct {
+      background: #d4edda;
+      border-left: 5px solid #28a745;
+    }
+    .incorrect {
+      background: #f8d7da;
+      border-left: 5px solid #dc3545;
+    }
+    .highlight-correct {
+      background-color: #a9f5a9;
+      border-radius: 5px;
+      padding: 2px 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Chapitre: Rayonnement Solaire et Énergie</h1>
+  <h1>QCM - Rayonnement Solaire et Énergie</h1>
   <form id="quizForm">
-    <p>1) L’énergie solaire résulte principalement:
-    <br><input type="radio" name="q1" value="A">D’une fusion électronique au cœur du Soleil
-    <br><input type="radio" name="q1" value="B">D’une fission atomique dans la photosphère
-    <br><input type="radio" name="q1" value="C">D’une fusion nucléaire dans le noyau solaire
-    <br><input type="radio" name="q1" value="D">D’une réaction chimique thermodynamique</p>
-    <p>2) L’unité de la puissance radiative est:
-    <br><input type="radio" name="q2" value="A">Le joule
-    <br><input type="radio" name="q2" value="B">Le watt
-    <br><input type="radio" name="q2" value="C">Le newton
-    <br><input type="radio" name="q2" value="D">Le volt</p>
-    <p>3) L’atmosphère terrestre joue un rôle dans:
-    <br><input type="radio" name="q3" value="A">L’augmentation directe de l’intensité solaire
-    <br><input type="radio" name="q3" value="B">Le blocage complet du rayonnement
-    <br><input type="radio" name="q3" value="C">La filtration et la réflexion partielle du rayonnement
-    <br><input type="radio" name="q3" value="D">La transformation du rayonnement en vent solaire</p>
-    <p>4) Le spectre du rayonnement solaire arrivant au sol est:
-    <br><input type="radio" name="q4" value="A">Identique au spectre émis par le Soleil
-    <br><input type="radio" name="q4" value="B">Réduit en certaines longueurs d’onde par l’atmosphère
-    <br><input type="radio" name="q4" value="C">Uniquement constitué de rayons UV
-    <br><input type="radio" name="q4" value="D">Uniquement constitué de rayons infrarouges</p>
-    <p>5) Un panneau photovoltaïque convertit:
-    <br><input type="radio" name="q5" value="A">L’énergie électrique en chimique
-    <br><input type="radio" name="q5" value="B">L’énergie thermique en nucléaire
-    <br><input type="radio" name="q5" value="C">L’énergie chimique en électrique
-    <br><input type="radio" name="q5" value="D">L’énergie lumineuse en électrique</p>
-    <p>6) L’albédo représente:
-    <br><input type="radio" name="q6" value="A">La fraction de rayonnement absorbée par la Terre
-    <br><input type="radio" name="q6" value="B">La fraction de rayonnement émise par la Terre
-    <br><input type="radio" name="q6" value="C">La fraction de rayonnement réfléchie par la Terre
-    <br><input type="radio" name="q6" value="D">La fraction de rayonnement stockée dans l’atmosphère</p>
-    <p>7) La puissance solaire reçue au sol dépend de:
-    <br><input type="radio" name="q7" value="A">La longitude uniquement
-    <br><input type="radio" name="q7" value="B">L’inclinaison du rayon solaire et de la latitude
-    <br><input type="radio" name="q7" value="C">La force du champ magnétique
-    <br><input type="radio" name="q7" value="D">La composition du noyau terrestre</p>
-    <p>8) Le couplage entre effet de serre et rayonnement solaire explique:
-    <br><input type="radio" name="q8" value="A">Le gel permanent de l’atmosphère
-    <br><input type="radio" name="q8" value="B">La pollution radioactive
-    <br><input type="radio" name="q8" value="C">La température moyenne relativement élevée sur Terre
-    <br><input type="radio" name="q8" value="D">L’absence de vie possible</p>
-    <p>9) Le principal gaz à effet de serre naturellement présent est:
-    <br><input type="radio" name="q9" value="A">Le dioxygène
-    <br><input type="radio" name="q9" value="B">Le diazote
-    <br><input type="radio" name="q9" value="C">La vapeur d’eau
-    <br><input type="radio" name="q9" value="D">Le dioxyde de soufre</p>
-    <p>10) La constante solaire est définie comme:
-    <br><input type="radio" name="q10" value="A">L’énergie reçue à la surface terrestre en un an
-    <br><input type="radio" name="q10" value="B">La puissance du Soleil au niveau de l’atmosphère terrestre
-    <br><input type="radio" name="q10" value="C">Le rayonnement solaire total émis vers la Terre
-    <br><input type="radio" name="q10" value="D">La somme des rayonnements UV reçus par m²</p>
-    <button type="button" onclick="calc()">Valider</button>
+    <div class="question">
+      <p>1) L’énergie solaire résulte principalement :</p>
+      <label><input type="radio" name="q1" value="A"> D’une fusion électronique au cœur du Soleil</label>
+      <label><input type="radio" name="q1" value="B"> D’une fission atomique dans la photosphère</label>
+      <label><input type="radio" name="q1" value="C"> D’une fusion nucléaire dans le noyau solaire</label>
+      <label><input type="radio" name="q1" value="D"> D’une réaction chimique thermodynamique</label>
+    </div>
+
+    <div class="question">
+      <p>2) L’unité de la puissance radiative est :</p>
+      <label><input type="radio" name="q2" value="A"> Le joule</label>
+      <label><input type="radio" name="q2" value="B"> Le watt</label>
+      <label><input type="radio" name="q2" value="C"> Le newton</label>
+      <label><input type="radio" name="q2" value="D"> Le volt</label>
+    </div>
+
+    <div class="question">
+      <p>3) L’atmosphère terrestre joue un rôle dans :</p>
+      <label><input type="radio" name="q3" value="A"> L’augmentation directe de l’intensité solaire</label>
+      <label><input type="radio" name="q3" value="B"> Le blocage complet du rayonnement</label>
+      <label><input type="radio" name="q3" value="C"> La filtration et la réflexion partielle du rayonnement</label>
+      <label><input type="radio" name="q3" value="D"> La transformation du rayonnement en vent solaire</label>
+    </div>
+
+    <div class="question">
+      <p>4) Le spectre du rayonnement solaire arrivant au sol est :</p>
+      <label><input type="radio" name="q4" value="A"> Identique au spectre émis par le Soleil</label>
+      <label><input type="radio" name="q4" value="B"> Réduit en certaines longueurs d’onde par l’atmosphère</label>
+      <label><input type="radio" name="q4" value="C"> Uniquement constitué de rayons UV</label>
+      <label><input type="radio" name="q4" value="D"> Uniquement constitué de rayons infrarouges</label>
+    </div>
+
+    <div class="question">
+      <p>5) Un panneau photovoltaïque convertit :</p>
+      <label><input type="radio" name="q5" value="A"> L’énergie électrique en chimique</label>
+      <label><input type="radio" name="q5" value="B"> L’énergie thermique en nucléaire</label>
+      <label><input type="radio" name="q5" value="C"> L’énergie chimique en électrique</label>
+      <label><input type="radio" name="q5" value="D"> L’énergie lumineuse en électrique</label>
+    </div>
+
+    <div class="question">
+      <p>6) L’albédo représente :</p>
+      <label><input type="radio" name="q6" value="A"> La fraction de rayonnement absorbée par la Terre</label>
+      <label><input type="radio" name="q6" value="B"> La fraction de rayonnement émise par la Terre</label>
+      <label><input type="radio" name="q6" value="C"> La fraction de rayonnement réfléchie par la Terre</label>
+      <label><input type="radio" name="q6" value="D"> La fraction de rayonnement stockée dans l’atmosphère</label>
+    </div>
+
+    <div class="question">
+      <p>7) La puissance solaire reçue au sol dépend de :</p>
+      <label><input type="radio" name="q7" value="A"> La longitude uniquement</label>
+      <label><input type="radio" name="q7" value="B"> L’inclinaison du rayon solaire et de la latitude</label>
+      <label><input type="radio" name="q7" value="C"> La force du champ magnétique</label>
+      <label><input type="radio" name="q7" value="D"> La composition du noyau terrestre</label>
+    </div>
+
+    <div class="question">
+      <p>8) Le couplage entre effet de serre et rayonnement solaire explique :</p>
+      <label><input type="radio" name="q8" value="A"> Le gel permanent de l’atmosphère</label>
+      <label><input type="radio" name="q8" value="B"> La pollution radioactive</label>
+      <label><input type="radio" name="q8" value="C"> La température moyenne relativement élevée sur Terre</label>
+      <label><input type="radio" name="q8" value="D"> L’absence de vie possible</label>
+    </div>
+
+    <div class="question">
+      <p>9) Le principal gaz à effet de serre naturellement présent est :</p>
+      <label><input type="radio" name="q9" value="A"> Le dioxygène</label>
+      <label><input type="radio" name="q9" value="B"> Le diazote</label>
+      <label><input type="radio" name="q9" value="C"> La vapeur d’eau</label>
+      <label><input type="radio" name="q9" value="D"> Le dioxyde de soufre</label>
+    </div>
+
+    <div class="question">
+      <p>10) La constante solaire est définie comme :</p>
+      <label><input type="radio" name="q10" value="A"> L’énergie reçue à la surface terrestre en un an</label>
+      <label><input type="radio" name="q10" value="B"> La puissance du Soleil au niveau de l’atmosphère terrestre</label>
+      <label><input type="radio" name="q10" value="C"> Le rayonnement solaire total émis vers la Terre</label>
+      <label><input type="radio" name="q10" value="D"> La somme des rayonnements UV reçus par m²</label>
+    </div>
+
+    <button class="btn" type="button" onclick="calc()">Valider</button>
+    <button class="btn" type="button" onclick="location.reload()">Recommencer</button>
   </form>
-  <p id="resultat"></p>
+
+  <div id="result" class="result"></div>
+
   <script>
+    const bonnesReponses = {
+      q1: "C", q2: "B", q3: "C", q4: "B", q5: "D",
+      q6: "C", q7: "B", q8: "C", q9: "C", q10: "B"
+    }
+
     function calc() {
-      let score=0
-      if(document.querySelector('input[name="q1"]:checked')?.value==="C")score++
-      if(document.querySelector('input[name="q2"]:checked')?.value==="B")score++
-      if(document.querySelector('input[name="q3"]:checked')?.value==="C")score++
-      if(document.querySelector('input[name="q4"]:checked')?.value==="B")score++
-      if(document.querySelector('input[name="q5"]:checked')?.value==="D")score++
-      if(document.querySelector('input[name="q6"]:checked')?.value==="C")score++
-      if(document.querySelector('input[name="q7"]:checked')?.value==="B")score++
-      if(document.querySelector('input[name="q8"]:checked')?.value==="C")score++
-      if(document.querySelector('input[name="q9"]:checked')?.value==="C")score++
-      if(document.querySelector('input[name="q10"]:checked')?.value==="B")score++
-      document.getElementById("resultat").innerHTML="Note obtenue: "+score+"/10"
+      let score = 0
+      for (let i = 1; i <= 10; i++) {
+        const q = "q" + i
+        const selected = document.querySelector('input[name="'+q+'"]:checked')
+        const questionDiv = document.querySelectorAll(".question")[i - 1]
+        const labels = questionDiv.querySelectorAll("label")
+
+        labels.forEach(label => {
+          const input = label.querySelector("input")
+          const val = input.value
+          label.classList.remove("correct", "incorrect")
+
+          if (val === bonnesReponses[q]) {
+            label.classList.add("correct")
+            if (selected && selected.value === val) score++
+          } else if (selected && selected.value === val) {
+            label.classList.add("incorrect")
+          }
+        })
+      }
+
+      document.getElementById("result").innerText = "Note obtenue : " + score + " / 10"
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
     }
   </script>
 </body>

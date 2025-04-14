@@ -84,6 +84,15 @@
       color: #444;
       margin-top: 10px;
     }
+    .correction-eclair {
+      background: rgba(255,255,255,0.9);
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-size: 16px;
+    }
     .correct {
       background: #d4edda;
       border-left: 5px solid #28a745;
@@ -106,6 +115,7 @@
   <button class="btn" type="button" onclick="location.reload()">Recommencer</button>
   <div id="result" class="result"></div>
   <div id="commentaire" class="commentaire"></div>
+  <div id="correctionEclair" class="correction-eclair"></div>
 
   <script>
     const questions = [
@@ -237,6 +247,7 @@
 
     function calc() {
       let score = 0
+      let erreurs = []
       questions.forEach((q, i) => {
         const selected = document.querySelector(`input[name="q${i + 1}"]:checked`)
         const labels = document.querySelectorAll(`input[name="q${i + 1}"]`)
@@ -248,18 +259,21 @@
           else if (selected && selected.value === r.value) label.classList.add("incorrect")
         })
         if (selected && parseInt(selected.value) === q.correct) score++
-        else correction.textContent = q.explication
+        else {
+          correction.textContent = q.explication
+          erreurs.push(`${i + 1}) ${q.explication}`)
+        }
       })
 
       document.getElementById("result").textContent = `Note obtenue : ${score} / 10`
       let appreciation = ""
-      if (score === 10) appreciation = "Excellent !"
-      else if (score >= 8) appreciation = "Très bien !"
-      else if (score >= 6) appreciation = "Bien."
-      else if (score >= 4) appreciation = "Peut mieux faire."
-      else appreciation = "À revoir."
-
+      if (score === 10) appreciation = "🌟 Parfait ! Le Soleil te remercie."
+      else if (score >= 8) appreciation = "🔥 Très bien ! Tu brilles comme un photon."
+      else if (score >= 6) appreciation = "☀️ Bien ! Tu captes bien l'énergie, mais peut mieux faire."
+      else if (score >= 4) appreciation = "🌤️ Tu as quelques nuages sur ta compréhension."
+      else appreciation = "🌧️ Il va falloir rebrancher le panneau solaire !"
       document.getElementById("commentaire").textContent = appreciation
+      document.getElementById("correctionEclair").innerHTML = `<strong>Correction éclair :</strong><br>` + erreurs.join("<br>")
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
     }
   </script>
